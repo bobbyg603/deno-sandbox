@@ -1,5 +1,7 @@
 export class BugSplat {
 
+    public formData = () => new FormData();
+
     private _database: string;
     private _appName: string;
     private _appVersion: string;
@@ -59,7 +61,7 @@ export class BugSplat {
         const url = `https://${this._database}.bugsplat.com/post/js/`;
         const callstack = !errorToPost.stack ? `${errorToPost?.toString()}` : errorToPost.stack;
         const method = 'POST';
-        const body = new FormData();
+        const body = this.formData();
         body.append('database', this._database);
         body.append('appName', this._appName);
         body.append('appVersion', this._appVersion);
