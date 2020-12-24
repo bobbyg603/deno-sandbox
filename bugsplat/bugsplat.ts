@@ -5,7 +5,6 @@ export class BugSplat {
     private _appVersion: string;
     private _formData: () => FormData;
     private _fetch: (input: string | Request | URL, init?: RequestInit | undefined) => Promise<Response>;
-    private _additionalFormDataParams: Array<FormDataParam>
     private _appKey: string;
     private _description: string;
     private _email: string;
@@ -30,7 +29,6 @@ export class BugSplat {
         this._formData = () => new FormData();
         this._fetch = fetch;
     
-        this._additionalFormDataParams = [];
         this._appKey = '';
         this._description = '';
         this._email = '';
