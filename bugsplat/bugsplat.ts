@@ -1,20 +1,3 @@
-
-// const fetch = globalThis.fetch ? globalThis.fetch.bind() : require('node-fetch');
-// const FormData = globalThis.FormData ? globalThis.FormData : require('form-data');
-
-interface FormDataParam {
-    key: string;
-    value: string | Blob;
-}
-
-interface BugSplatOptions {
-    additionalFormDataParams?: Array<FormDataParam>;
-    appKey?: string;
-    description?:  string;
-    email?: string;
-    user?: string;
-}
-
 export class BugSplat {
 
     private _database: string;
@@ -135,3 +118,16 @@ export class BugSplat {
         return parsed;
     }
 };
+
+interface FormDataParam {
+    key: string;
+    value: string | Blob;
+}
+
+interface BugSplatOptions {
+    additionalFormDataParams?: Array<FormDataParam>;
+    appKey?: string;
+    description?:  string;
+    email?: string;
+    user?: string;
+}
