@@ -3,8 +3,6 @@ export class BugSplat {
     private _database: string;
     private _appName: string;
     private _appVersion: string;
-    private _formData: () => FormData;
-    private _fetch: (input: string | Request | URL, init?: RequestInit | undefined) => Promise<Response>;
     private _appKey: string;
     private _description: string;
     private _email: string;
@@ -26,8 +24,6 @@ export class BugSplat {
         this._database = database;
         this._appName = appName;
         this._appVersion = appVersion;
-        this._formData = () => new FormData();
-        this._fetch = fetch;
     
         this._appKey = '';
         this._description = '';
@@ -63,7 +59,7 @@ export class BugSplat {
         const url = `https://${this._database}.bugsplat.com/post/js/`;
         const callstack = !errorToPost.stack ? `${errorToPost?.toString()}` : errorToPost.stack;
         const method = 'POST';
-        const body = this._formData();
+        const body = new FormData();
         body.append('database', this._database);
         body.append('appName', this._appName);
         body.append('appVersion', this._appVersion);
@@ -77,7 +73,7 @@ export class BugSplat {
         console.log('BugSplat Error:', errorToPost);
         console.log('BugSplat Url:', url);
 
-        const response = await this._fetch(url, { method, body });
+        const response = await fetch(url, { method, body });
         const json = await this._tryParseResponseJson(response);
 
         console.log('BugSplat POST status code:', response.status);
