@@ -1,0 +1,6 @@
+// Fix for error using main.ts without an export
+{
+    "compilerOptions": {
+        "isolatedModules": false
+    }
+}
